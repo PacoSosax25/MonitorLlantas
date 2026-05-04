@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Llantas - Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header">
+        <div class="header-left">
+            <h1>Monitor de Llantas</h1>
+        </div>
+        <div class="header-right">
+            <span class="usuario-nombre" th:text="${nombreCompleto}"></span>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn-salir">Salir</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+
+        <div class="toolbar">
+            <div class="filtro-group">
+                <label for="filtroTipo">Filtrar por tipo:</label>
+                <select id="filtroTipo" class="select-filtro">
+                    <option value="TODOS">Todos</option>
+                    <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}"></option>
+                </select>
+            </div>
+
+            <div class="leyenda">
+                <span class="leyenda-item"><span class="punto rojo"></span> &lt;= 3.0</span>
+                <span class="leyenda-item"><span class="punto amarillo"></span> 3.1 - 5.9</span>
+                <span class="leyenda-item"><span class="punto verde"></span> &gt;= 6.0</span>
+            </div>
+        </div>
+
+        <div class="tabla-wrapper">
+            <table class="tabla-llantas" id="tablaLlantas">
+                <thead>
+                    <tr>
+                        <th>Unidad</th>
+                        <th>Tipo</th>
+                        <th>Delantera Izquierda</th>
+                        <th>Delantera Derecha</th>
+                        <th>Trasera Izq. Interior</th>
+                        <th>Trasera Izq. Exterior</th>
+                        <th>Trasera Der. Interior</th>
+                        <th>Trasera Der. Exterior</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoDashboard">
+                    <tr th:each="llanta : ${llantas}">
+                        <td th:text="${llanta.unidad}"></td>
+                        <td th:text="${llanta.tipo}"></td>
+                        <td th:class="${'celda-' + llanta.delanteroIzquierdo.color}"
+                            th:text="${llanta.delanteroIzquierdo.valorFormateado}"></td>
+                        <td th:class="${'celda-' + llanta.delanteroDerecho.color}"
+                            th:text="${llanta.delanteroDerecho.valorFormateado}"></td>
+                        <td th:class="${'celda-' + llanta.traseraIzquierdaInterior.color}"
+                            th:text="${llanta.traseraIzquierdaInterior.valorFormateado}"></td>
+                        <td th:class="${'celda-' + llanta.traseraIzquierdaExterior.color}"
+                            th:text="${llanta.traseraIzquierdaExterior.valorFormateado}"></td>
+                        <td th:class="${'celda-' + llanta.traseraDerechaInterior.color}"
+                            th:text="${llanta.traseraDerechaInterior.valorFormateado}"></td>
+                        <td th:class="${'celda-' + llanta.traseraDerechaExterior.color}"
+                            th:text="${llanta.traseraDerechaExterior.valorFormateado}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(llantas)}">
+                        <td colspan="8" class="sin-datos">No hay datos disponibles</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <script th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>

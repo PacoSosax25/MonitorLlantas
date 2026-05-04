@@ -1,0 +1,325 @@
+/* =============================================
+   Variables y reset
+   ============================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-rojo: #e53935;
+    --color-amarillo: #fdd835;
+    --color-verde: #43a047;
+    --color-header: #1565c0;
+    --color-header-text: #ffffff;
+    --color-fondo: #f4f6f9;
+    --color-card: #ffffff;
+    --color-borde: #dde1e7;
+    --color-texto: #2c3e50;
+    --color-texto-claro: #6c757d;
+    --radio: 6px;
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+/* =============================================
+   Login
+   ============================================= */
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+}
+
+.login-card {
+    background: var(--color-card);
+    border-radius: var(--radio);
+    padding: 40px 36px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.login-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-header);
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: var(--color-texto-claro);
+    margin-bottom: 28px;
+    font-size: 13px;
+}
+
+.alert-error {
+    background-color: #fdecea;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+    border-radius: var(--radio);
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    font-size: 13px;
+}
+
+.login-form .form-group {
+    margin-bottom: 18px;
+}
+
+.login-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    font-size: 14px;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.login-form input:focus {
+    border-color: var(--color-header);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-header);
+    color: #fff;
+    border: none;
+    border-radius: var(--radio);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #0d47a1;
+}
+
+/* =============================================
+   Dashboard - Header
+   ============================================= */
+.dashboard-header {
+    background-color: var(--color-header);
+    color: var(--color-header-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 56px;
+    box-shadow: var(--sombra);
+}
+
+.dashboard-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.usuario-nombre {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.btn-salir {
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: var(--radio);
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-salir:hover {
+    background-color: rgba(255,255,255,0.28);
+}
+
+/* =============================================
+   Dashboard - Main
+   ============================================= */
+.dashboard-main {
+    padding: 24px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filtro-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filtro-group label {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.select-filtro {
+    padding: 7px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    font-size: 13px;
+    background: var(--color-card);
+    cursor: pointer;
+    outline: none;
+}
+
+.select-filtro:focus {
+    border-color: var(--color-header);
+}
+
+/* Leyenda semáforo */
+.leyenda {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--color-texto-claro);
+}
+
+.punto {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.punto.rojo    { background-color: var(--color-rojo); }
+.punto.amarillo { background-color: var(--color-amarillo); }
+.punto.verde   { background-color: var(--color-verde); }
+
+/* =============================================
+   Tabla de llantas
+   ============================================= */
+.tabla-wrapper {
+    overflow-x: auto;
+    background: var(--color-card);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.tabla-llantas {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 780px;
+}
+
+.tabla-llantas thead th {
+    background-color: var(--color-header);
+    color: var(--color-header-text);
+    padding: 12px 14px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+}
+
+.tabla-llantas thead th:first-child {
+    text-align: left;
+    border-radius: var(--radio) 0 0 0;
+}
+
+.tabla-llantas thead th:last-child {
+    border-radius: 0 var(--radio) 0 0;
+}
+
+.tabla-llantas tbody tr {
+    border-bottom: 1px solid var(--color-borde);
+    transition: background-color 0.15s;
+}
+
+.tabla-llantas tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tabla-llantas tbody tr:hover {
+    background-color: #f0f4ff;
+}
+
+.tabla-llantas td {
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.tabla-llantas td:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+
+.sin-datos {
+    text-align: center !important;
+    color: var(--color-texto-claro);
+    padding: 32px !important;
+}
+
+/* =============================================
+   Celdas semáforo
+   ============================================= */
+.celda-rojo {
+    background-color: var(--color-rojo);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.celda-amarillo {
+    background-color: var(--color-amarillo);
+    color: #333;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.celda-verde {
+    background-color: var(--color-verde);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+/* celda- (string vacío) no aplica estilo */
